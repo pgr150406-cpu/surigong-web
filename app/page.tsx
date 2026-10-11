@@ -34,10 +34,10 @@ export default function Home() {
           </nav>
 
           <a
-            href="#services"
+            href="tel:01028920819"
             className="rounded-full bg-slate-950 px-4 py-2.5 text-sm font-bold text-white transition hover:bg-slate-800"
           >
-            서비스 찾기
+            지금 바로 문의하세요 · 010-2892-0819
           </a>
         </div>
       </header>
@@ -71,10 +71,10 @@ export default function Home() {
                 서비스 선택하기
               </a>
               <a
-                href="#guide"
+                href="tel:01028920819"
                 className="rounded-xl border border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-800 transition hover:bg-slate-50"
               >
-                이용 방법 보기
+                전화 문의 010-2892-0819
               </a>
             </div>
           </div>
@@ -164,16 +164,16 @@ export default function Home() {
       <section className="mx-auto max-w-6xl px-5 pb-20 md:px-6 md:pb-24">
         <div className="rounded-3xl bg-slate-950 px-7 py-10 text-white md:px-12 md:py-14">
           <p className="text-sm font-bold text-emerald-300">SURIGONG</p>
-          <h2 className="mt-3 text-3xl font-black md:text-4xl">어떤 수리가 필요하신가요?</h2>
-          <p className="mt-4 max-w-2xl leading-7 text-slate-300">필요한 서비스를 먼저 선택하고, 작업이 필요한 지역의 정보를 확인해보세요.</p>
-          <a href="#services" className="mt-7 inline-block rounded-xl bg-white px-6 py-3 font-bold text-slate-950">서비스 찾아보기</a>
+          <h2 className="mt-3 text-3xl font-black md:text-4xl">지금 바로 문의하세요</h2>
+          <p className="mt-4 max-w-2xl leading-7 text-slate-300">서비스 선택이 어렵거나 바로 상담이 필요하면 전화로 문의하세요.</p>
+          <a href="tel:01028920819" className="mt-7 inline-block rounded-xl bg-white px-6 py-3 font-bold text-slate-950">010-2892-0819</a>
         </div>
       </section>
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between md:px-6">
           <strong className="text-slate-800">수리공</strong>
-          <span>© 2026 수리공. All rights reserved.</span>
+          <span>문의 010-2892-0819 · © 2026 수리공. All rights reserved.</span>
         </div>
       </footer>
     </main>
