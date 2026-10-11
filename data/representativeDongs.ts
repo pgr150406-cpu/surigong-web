@@ -1,0 +1,167 @@
+export const representativeDongs = [
+  {
+    city: "인천",
+    district: "계양구",
+    name: "효성동",
+    children: ["효성1동", "효성2동"],
+  },
+  {
+    city: "인천",
+    district: "계양구",
+    name: "계산동",
+    children: ["계산1동", "계산2동", "계산3동", "계산4동"],
+  },
+  {
+    city: "인천",
+    district: "계양구",
+    name: "작전동",
+    children: ["작전1동", "작전2동", "작전서운동"],
+  },
+
+  {
+    city: "인천",
+    district: "부평구",
+    name: "부평동",
+    children: [
+      "부평1동",
+      "부평2동",
+      "부평3동",
+      "부평4동",
+      "부평5동",
+      "부평6동",
+    ],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "산곡동",
+    children: ["산곡1동", "산곡2동", "산곡3동", "산곡4동"],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "청천동",
+    children: ["청천1동", "청천2동"],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "갈산동",
+    children: ["갈산1동", "갈산2동"],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "삼산동",
+    children: ["삼산1동", "삼산2동"],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "부개동",
+    children: ["부개1동", "부개2동", "부개3동"],
+  },
+  {
+    city: "인천",
+    district: "부평구",
+    name: "십정동",
+    children: ["십정1동", "십정2동"],
+  },
+
+  {
+    city: "인천",
+    district: "남동구",
+    name: "구월동",
+    children: ["구월1동", "구월2동", "구월3동", "구월4동"],
+  },
+  {
+    city: "인천",
+    district: "남동구",
+    name: "간석동",
+    children: ["간석1동", "간석2동", "간석3동", "간석4동"],
+  },
+  {
+    city: "인천",
+    district: "남동구",
+    name: "만수동",
+    children: [
+      "만수1동",
+      "만수2동",
+      "만수3동",
+      "만수4동",
+      "만수5동",
+      "만수6동",
+    ],
+  },
+  {
+    city: "인천",
+    district: "남동구",
+    name: "논현동",
+    children: ["논현1동", "논현2동", "논현고잔동"],
+  },
+
+  {
+    city: "인천",
+    district: "연수구",
+    name: "옥련동",
+    children: ["옥련1동", "옥련2동"],
+  },
+  {
+    city: "인천",
+    district: "연수구",
+    name: "연수동",
+    children: ["연수1동", "연수2동", "연수3동"],
+  },
+  {
+    city: "인천",
+    district: "연수구",
+    name: "동춘동",
+    children: ["동춘1동", "동춘2동", "동춘3동"],
+  },
+  {
+    city: "인천",
+    district: "연수구",
+    name: "송도동",
+    children: ["송도1동", "송도2동", "송도3동", "송도4동", "송도5동"],
+  },
+
+  {
+    city: "인천",
+    district: "미추홀구",
+    name: "숭의동",
+    children: ["숭의1·3동", "숭의2동", "숭의4동"],
+  },
+  {
+    city: "인천",
+    district: "미추홀구",
+    name: "용현동",
+    children: ["용현1·4동", "용현2동", "용현3동", "용현5동"],
+  },
+  {
+    city: "인천",
+    district: "미추홀구",
+    name: "학익동",
+    children: ["학익1동", "학익2동"],
+  },
+  {
+    city: "인천",
+    district: "미추홀구",
+    name: "도화동",
+    children: ["도화1동", "도화2·3동"],
+  },
+  {
+    city: "인천",
+    district: "미추홀구",
+    name: "주안동",
+    children: [
+      "주안1동",
+      "주안2동",
+      "주안3동",
+      "주안4동",
+      "주안5동",
+      "주안6동",
+      "주안7동",
+      "주안8동",
+    ],
+  },
+] as const;
