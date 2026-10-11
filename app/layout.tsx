@@ -1,8 +1,10 @@
 import type { Metadata } from "next";
 import "./globals.css";
 
+const siteUrl = "https://xn--ob0b34v1qg.kr";
+
 export const metadata: Metadata = {
-  metadataBase: new URL("https://surigong-web.vercel.app"),
+  metadataBase: new URL(siteUrl),
 
   title: {
     default: "수리공 | 우리 동네 전문 작업자 연결",
@@ -44,7 +46,7 @@ export const metadata: Metadata = {
     title: "수리공 | 우리 동네 전문 작업자 연결",
     description:
       "필요한 서비스와 지역을 선택하고 전문 작업자를 찾아보세요.",
-    url: "https://surigong-web.vercel.app",
+    url: siteUrl,
   },
 };
 
