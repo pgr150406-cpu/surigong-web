@@ -54,6 +54,7 @@ export default function Home() {
           <nav className="hidden items-center gap-7 text-sm font-semibold text-slate-600 md:flex">
             <a href="#services" className="transition hover:text-slate-950">서비스</a>
             <a href="#principles" className="transition hover:text-slate-950">수리공 방식</a>
+            <Link href="/cases" className="transition hover:text-slate-950">작업사례</Link>
             <a href="#contact" className="transition hover:text-slate-950">문의</a>
           </nav>
 
@@ -213,7 +214,7 @@ export default function Home() {
 
       <footer className="border-t border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between md:px-6">
-          <strong className="text-slate-800">수리공</strong>
+          <div className="flex gap-4"><strong className="text-slate-800">수리공</strong><Link href="/cases">작업사례</Link><Link href="/admin/posts">관리자 글쓰기</Link></div>
           <span>문의 010-2892-0819 · © 2026 수리공. All rights reserved.</span>
         </div>
       </footer>
