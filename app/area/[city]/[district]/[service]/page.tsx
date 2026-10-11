@@ -7,6 +7,8 @@ import { serviceDetails } from "@/data/services";
 
 export const instant = false;
 
+const siteUrl = "https://xn--ob0b34v1qg.kr";
+
 type Props = {
   params: Promise<{
     city: string;
@@ -37,21 +39,27 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const detail = serviceDetails[serviceName as keyof typeof serviceDetails];
 
   const canonicalUrl =
-    `https://surigong-web.vercel.app/area/` +
+    `${siteUrl}/area/` +
     `${encodeURIComponent(cityName)}/` +
     `${encodeURIComponent(districtName)}/` +
     `${encodeURIComponent(serviceName)}`;
 
   const description = detail
-    ? `${cityName} ${districtName} ${serviceName} 작업 안내. ${detail.intro} 대표 지역과 동별 정보를 확인하세요.`
-    : `${cityName} ${districtName} ${serviceName} 작업 지역과 동별 정보를 확인하세요.`;
+    ? `${cityName} ${districtName} ${serviceName} 안내. ${detail.intro} 대표 동과 세부 행정동별 ${serviceName} 정보를 확인하고 010-2892-0819로 문의하세요.`
+    : `${cityName} ${districtName} ${serviceName} 지역 안내. 대표 동과 세부 행정동별 정보를 확인하세요.`;
 
   return {
-    title: `${districtName} ${serviceName} 전문업체`,
+    title: `${districtName} ${serviceName} | 지역별 작업 안내`,
     description,
+    keywords: [
+      `${districtName} ${serviceName}`,
+      `${cityName} ${districtName} ${serviceName}`,
+      `${districtName} ${serviceName} 업체`,
+      `${districtName} ${serviceName} 문의`,
+    ],
     alternates: { canonical: canonicalUrl },
     openGraph: {
-      title: `${districtName} ${serviceName} 전문업체 | 수리공`,
+      title: `${districtName} ${serviceName} | 수리공`,
       description,
       url: canonicalUrl,
       siteName: "수리공",
@@ -94,21 +102,14 @@ export default async function DistrictServicePage({ params }: Props) {
       <header className="sticky top-0 z-30 border-b border-slate-200/80 bg-white/95 backdrop-blur">
         <div className="mx-auto flex max-w-6xl items-center justify-between px-5 py-4 md:px-6">
           <Link href="/" className="text-2xl font-black tracking-tight">수리공</Link>
-          <Link
-            href={`/service/${encodeURIComponent(serviceName)}`}
-            className="rounded-full border border-slate-200 px-4 py-2 text-sm font-bold text-slate-600 transition hover:bg-slate-50"
-          >
-            다른 지역 보기
-          </Link>
+          <a href="tel:01028920819" className="rounded-full bg-slate-950 px-4 py-2 text-sm font-bold text-white">010-2892-0819</a>
         </div>
       </header>
 
       <nav className="border-b border-slate-200 bg-white">
         <div className="mx-auto flex max-w-6xl flex-wrap items-center gap-2 px-5 py-3 text-sm text-slate-500 md:px-6">
-          <Link href="/" className="hover:text-slate-950">홈</Link>
-          <span>›</span>
-          <Link href={`/service/${encodeURIComponent(serviceName)}`} className="hover:text-slate-950">{serviceName}</Link>
-          <span>›</span>
+          <Link href="/">홈</Link><span>›</span>
+          <Link href={`/service/${encodeURIComponent(serviceName)}`}>{serviceName}</Link><span>›</span>
           <span className="font-semibold text-slate-700">{cityName} {districtName}</span>
         </div>
       </nav>
@@ -116,23 +117,26 @@ export default async function DistrictServicePage({ params }: Props) {
       <section className="border-b border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20">
           <div className="inline-flex rounded-full bg-emerald-50 px-3 py-1.5 text-sm font-bold text-emerald-800">
-            {cityName} · {districtName}
+            {cityName} · {districtName} · {serviceName}
           </div>
-          <h1 className="mt-5 text-4xl font-black tracking-tight md:text-5xl">
-            {districtName} {serviceName} 지역 안내
+          <h1 className="mt-5 max-w-4xl text-4xl font-black leading-tight tracking-tight md:text-5xl">
+            {districtName} {serviceName}, 지역별로 확인하세요
           </h1>
           <p className="mt-5 max-w-3xl text-lg leading-8 text-slate-600">
-            {serviceIntro} 아래에서 많이 사용하는 지역명이나 세부 행정동을 선택해 더 구체적인 정보를 확인할 수 있습니다.
+            {serviceIntro} {districtName} 안에서도 건물 구조와 작업 위치가 달라질 수 있어 동 단위로 확인하면 상담이 더 정확해집니다.
           </p>
+          <div className="mt-7 flex flex-wrap gap-3">
+            <a href="tel:01028920819" className="rounded-xl bg-emerald-600 px-6 py-3.5 font-bold text-white">전화 문의 010-2892-0819</a>
+            <Link href={`/service/${encodeURIComponent(serviceName)}`} className="rounded-xl border border-slate-300 bg-white px-6 py-3.5 font-bold text-slate-800">다른 지역 보기</Link>
+          </div>
         </div>
       </section>
 
       {representativeAreas.length > 0 && (
         <section className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20">
           <p className="text-sm font-black tracking-widest text-emerald-700">POPULAR AREAS</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName}에서 많이 찾는 지역</h2>
-          <p className="mt-4 max-w-3xl leading-7 text-slate-600">실제 검색에서 자주 쓰는 대표 동명을 기준으로 {serviceName} 정보를 확인할 수 있습니다.</p>
-
+          <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName} 대표 지역 {serviceName}</h2>
+          <p className="mt-4 max-w-3xl leading-7 text-slate-600">검색에서 자주 쓰는 대표 동명과 세부 행정동을 연결해 원하는 지역 페이지를 빠르게 찾을 수 있습니다.</p>
           <div className="mt-8 grid gap-5 sm:grid-cols-2 lg:grid-cols-3">
             {representativeAreas.map((area) => (
               <Link
@@ -145,7 +149,6 @@ export default async function DistrictServicePage({ params }: Props) {
                   <span className="text-xl text-slate-300 transition group-hover:translate-x-1 group-hover:text-emerald-600">→</span>
                 </div>
                 <p className="mt-3 text-sm leading-6 text-slate-500">세부 지역: {area.children.join(", ")}</p>
-                <p className="mt-5 text-sm font-bold">대표 지역 보기</p>
               </Link>
             ))}
           </div>
@@ -155,9 +158,8 @@ export default async function DistrictServicePage({ params }: Props) {
       <section className="border-y border-slate-200 bg-white">
         <div className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20">
           <p className="text-sm font-black tracking-widest text-emerald-700">ALL AREAS</p>
-          <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName} 세부 행정동</h2>
-          <p className="mt-4 max-w-3xl leading-7 text-slate-600">작업이 필요한 동을 선택하면 해당 지역의 {serviceName} 페이지로 이동합니다.</p>
-
+          <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName} 동별 {serviceName}</h2>
+          <p className="mt-4 max-w-3xl leading-7 text-slate-600">작업이 필요한 동을 선택하면 해당 지역의 {serviceName} 안내, 확인 포인트, 문의 전 준비사항을 확인할 수 있습니다.</p>
           <div className="mt-8 grid gap-4 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4">
             {location.dongs.map((dong) => (
               <Link
@@ -177,15 +179,13 @@ export default async function DistrictServicePage({ params }: Props) {
         <div className="grid gap-10 md:grid-cols-[0.8fr_1.2fr]">
           <div>
             <p className="text-sm font-black tracking-widest text-emerald-700">SERVICE GUIDE</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName} {serviceTitle}</h2>
-            <p className="mt-4 leading-7 text-slate-600">문의 전 아래 항목을 확인하면 필요한 작업 범위를 설명하기 수월합니다.</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight">{districtName} {serviceTitle} 확인 포인트</h2>
+            <p className="mt-4 leading-7 text-slate-600">같은 {serviceName}이라도 현장 조건에 따라 작업 방식과 범위가 달라질 수 있습니다.</p>
           </div>
           <div className="grid gap-4 sm:grid-cols-3">
             {points.map((point, index) => (
               <div key={point} className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm">
-                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-sm font-black text-emerald-800">
-                  {String(index + 1).padStart(2, "0")}
-                </span>
+                <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-emerald-100 text-sm font-black text-emerald-800">{String(index + 1).padStart(2, "0")}</span>
                 <h3 className="mt-5 font-black leading-6">{point}</h3>
               </div>
             ))}
@@ -193,28 +193,19 @@ export default async function DistrictServicePage({ params }: Props) {
         </div>
       </section>
 
-      <section className="border-t border-slate-200 bg-white">
-        <div className="mx-auto max-w-6xl px-5 py-16 md:px-6 md:py-20">
-          <h2 className="text-3xl font-black tracking-tight">문의 전에 확인하면 좋은 내용</h2>
-          <div className="mt-8 grid gap-5 md:grid-cols-3">
-            {[
-              ["정확한 작업 위치", "구와 동, 건물 형태를 함께 알려주면 지역 확인이 쉽습니다."],
-              ["현재 문제와 증상", "언제부터 어떤 문제가 발생했는지 구체적으로 정리해주세요."],
-              ["작업 범위", "점검만 필요한지, 수리나 교체까지 필요한지 알고 있는 범위에서 알려주세요."],
-            ].map(([title, text]) => (
-              <div key={title} className="rounded-2xl bg-slate-50 p-6">
-                <h3 className="font-black">{title}</h3>
-                <p className="mt-3 leading-7 text-slate-600">{text}</p>
-              </div>
-            ))}
-          </div>
+      <section className="border-t border-slate-200 bg-slate-950 text-white">
+        <div className="mx-auto max-w-6xl px-5 py-14 md:px-6">
+          <p className="text-sm font-bold text-emerald-300">CONTACT</p>
+          <h2 className="mt-3 text-3xl font-black">{districtName} {serviceName} 문의</h2>
+          <p className="mt-4 max-w-2xl leading-7 text-slate-300">지역, 건물 형태, 현재 증상을 알려주시면 상담에 도움이 됩니다.</p>
+          <a href="tel:01028920819" className="mt-7 inline-block rounded-xl bg-white px-6 py-3 font-bold text-slate-950">010-2892-0819</a>
         </div>
       </section>
 
-      <footer className="border-t border-slate-200 bg-white">
-        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-slate-500 md:flex-row md:items-center md:justify-between md:px-6">
-          <strong className="text-slate-800">수리공</strong>
-          <span>© 2026 수리공. All rights reserved.</span>
+      <footer className="border-t border-slate-800 bg-slate-950">
+        <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-6">
+          <strong className="text-white">수리공</strong>
+          <span>문의 010-2892-0819 · © 2026 수리공</span>
         </div>
       </footer>
     </main>
