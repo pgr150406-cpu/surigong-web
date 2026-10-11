@@ -1,5 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
+import { Suspense } from "react";
+import LocalCases from "@/app/components/local-cases";
 
 import { locations, services } from "@/data/locations";
 import { representativeDongs } from "@/data/representativeDongs";
@@ -342,6 +344,8 @@ export default async function LocalServicePage({ params }: Props) {
           <a href="tel:01028920819" className="mt-7 inline-block rounded-xl bg-white px-6 py-3 font-bold text-slate-950">010-2892-0819</a>
         </div>
       </section>
+
+      <section className="mx-auto max-w-6xl px-5 py-12 md:px-6"><h2 className="text-2xl font-black">이 지역의 실제 작업사례</h2><Suspense fallback={<p className="mt-5">작업사례를 불러오고 있습니다.</p>}><LocalCases city={cityName} district={districtName} dong={dongName} service={serviceName} /></Suspense></section>
 
       <footer className="border-t border-slate-800 bg-slate-950">
         <div className="mx-auto flex max-w-6xl flex-col gap-2 px-5 py-8 text-sm text-slate-400 md:flex-row md:items-center md:justify-between md:px-6">
