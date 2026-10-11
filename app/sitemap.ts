@@ -4,7 +4,7 @@ import { locations, services } from "@/data/locations";
 import { representativeDongs } from "@/data/representativeDongs";
 
 export default function sitemap(): MetadataRoute.Sitemap {
-  const baseUrl = "https://surigong-web.vercel.app";
+  const baseUrl = "https://xn--ob0b34v1qg.kr";
 
   const servicePages = services.map((service) => ({
     url: `${baseUrl}/service/${encodeURIComponent(service)}`,
